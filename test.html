@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/portfolio.js"></script>
+
+
+</head>
+<body >
+	<header>Anyone can write code that a computer can understand. Good programmers write code that humans can understand.</header>
+	<div class="logo">this will be the logo</div>
+
+<div ng-app="TabsApp">
+    <div class="tabs" ng-controller="TabsCtrl">
+        <ul>
+            <li ng-repeat="tab in tabs" 
+                ng-class="{active:isActiveTab(tab.url)}" 
+                ng-click="onClickTab(tab)">{{tab.name}}</li>
+        </ul>
+        <div id="mainView" >
+            <div ng-include="currentTab"></div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="home.html">
+		<div ng-init="image='me.jpg'" class="Welcome">
+			<img ng-src="{{image}}" alt="Rachit Thirani">
+			<div>
+			<h1>Hi. I am Rachit Thirani</h1>
+			<h2>Master Of Computer Science</h2>
+			<h2>Bachlor Of Enrineering - Information and Communication Technology</h2>
+			<p>Thank you for visiting rachitthirani.info</p>
+			<p>Select any tab to know about me and my skills</p>
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/ng-template" id="aboutme.html">
+		<div id="viewOne">
+			<h1>About Me</h1>
+			<p>  My name is Rachit Thirani I am a passionate Software Developer with expertise in Full Stack Web Development and Data Analysis.
+
+I graduated with Masters in Computer Science from North Carolina State University in December, 2017. I have broad experience across a wide spectrum of software programming languages, technology stacks, databases and tools.
+		</div>
+	</script>
+	
+	<script type="text/ng-template" id="experience.html">
+		<div id="viewTwo">
+			<h1>Experience</h1>
+			<p>I have worked as Interactive developer L1 at Sapient Nitro from November 2014 till May 2016. 
+			My tasks and duties were as follows </p>
+			<ul>
+				<li>Specialized developer in Front-End domain for several multi-million dollar clients.</li>
+				<li>Developed and tested responsive components with cross browser compatibility for client’s webpages.</li>
+				<li>Reduced the maintenance effort required by automation of CSS for all clients’s modules using GRUNT and LESS</li>
+				<li>Managed Front-End developers as Track Lead and POC for all development</li>
+				<li>Additional Technologies Used - HTML5, AJAX, Javascript, JQuery, Bootstrap, NodeJS, AngularJS, CSS3</li>
+			</ul>
+		</div>
+	</script>
+	
+	<script type="text/ng-template" id="projects.html">
+		<div id="viewThree">
+			<h1>projects</h1>
+			<p>machine learning</p>
+		</div>
+
+		<div ng-app="projectsApp">
+    		<div id="pro" ng-controller="projectsCtrl">
+        	<!--<ul>
+        			<li ng-repeat="cat in projects">{{cat.cate_name}}
+        				<ul>
+            				<li ng-repeat="pro in cat.pro" >{{pro.name}}<p>{{pro.desc}}</p><a>{{pro.url}}</a></li>
+            			</ul>
+            		</li>
+        		</ul>-->
+        	<div> 
+        		<ul class="tabbedview">
+        			<li mg-class="{active:tab==0}"><a href ng-click="tab = tab==0 ? null : 0">All</a></li>
+        			<li ng-repeat="cat in projects" ng-class="{active:tab==={{cat.index}}}"> 
+      					<a href ng-click="tab = tab=={{cat.index}} ? null : {{cat.index}}">{{cat.cate_name}}</a>               
+   			 		</li> 
+        		</ul>
+        		<section ng-show="tab === 0"> {{cat.cate_name}}
+        			<ul>
+        				<li ng-repeat="cat in projects">{{cat.cate_name}}
+        					<ul>
+            					<li ng-repeat="pro in cat.pro" >{{pro.name}}<p>{{pro.desc}}</p><a>{{pro.url}}</a></li>
+            				</ul>
+            			</li>
+        			</ul>
+        	
+        		</section> 
+        		<section ng-repeat="cat in projects" ng-show="tab === {{cat.index}}"> {{cat.cate_name}}
+        			<p ng-repeat="pro in cat.pro" >{{pro.name}}
+        			<span>{{pro.desc}}</span>
+        			<a>{{pro.url}}</a>
+        			</p>
+        		</section>           
+       		 </div>
+        </div>
+
+    </div>
+	</script>
+	<script type="text/ng-template" id="contactme.html">
+		<div class="contactme" background="connect_background.jpg">
+			<h1>contact me</h1>
+			<div>
+			<a href="https://www.facebook.com/rachit.thirani"><img src="fb.png"></a>
+			<a href="https://www.linkedin.com/in/rachitthirani/"><img src="linkedin.png"></a>
+			<a href="mailto:rachitthirani@yahoo.com"><img src="email.png"></a>
+			<a href="tel:+19197716184"><img src="phone.jpg"</a>
+			<div>
+		</div>
+	</script>
+</div>
+</body>
+</html>
